@@ -1,0 +1,20 @@
+@charset "utf-8";
+body{
+    padding-top: 20px;
+    background-color: #f6f6f6;
+}
+#link{
+	text-align-last: left;
+}
+.ali{
+	float: right;
+    padding-bottom: 20px;
+}
+.icon{
+    width: 17px;
+    height: 17px;
+  }
+
+.tabletab td {
+    text-align: center;
+}

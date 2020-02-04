@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>About</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="static/css/bootstrap.min.css">
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="static/css/main.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="static/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+  <h3 align="center" style="font-family: Georgia, 'Times New Roman', Times, serif">Automatic Timetable Generator</h3>
+  <!--<hr color="red" size="2px"></hr>-->
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #008a93">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <div>
+        <a class="nav-link" href="/" style="color: floralwhite"> Home </i></a>
+        </div> 
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/about" class="colr" style="color: floralwhite">About</a>
+      </li>
+		<li class="nav-item">
+        <a class="nav-link " href="/contact" tabindex="-1" style="color: floralwhite" >Contact Us</a>
+      </li>
+		<li class="nav-item">
+        <a class="nav-link " href="/feedback" tabindex="-1" style="color: floralwhite" >Feedback</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" style="color: floralwhite" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Login/Signup
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#login" onClick="showPophod(this)">HoD</a>
+                  <a class="dropdown-item" href="#" onClick="showPopfaculty(this)">Faculty</a>
+            </li>  
+          </ul>
+          </div>
+        <div class="modal fade" id="hodModal" tabindex="-1" role="dialog" aria-labelledby="hodModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+        
+          <div class="modal-content" style="display:block;" id="pop-up">
+        
+        
+        <div class="modal-header"class="row">
+        <table class="btn-group">
+        <tr class="nav nav-tabs">
+        <td>
+            <div class="modal-header" class="col-sm-3">
+              <a class="modal-title" id="hodModalLabel" href="#login" onClick="split(this);">Login</a>
+            </div>
+          </td>
+          <td>
+          <div class="modal-header" class="col-sm-3">
+             <a class="modal-title" id="hodModalLabel1" href="#signup" onClick="split(this);">Signup</a>
+            </div>
+          </td>
+          </table>
+          <div class="modal-header" class="col-md-3">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick="showPophod(this)">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          </div>
+            <div class="modal-body" id="hodlogin" style="display: block;">
+              <form action="/hodlogin" method="POST">
+        <div class="form-group">
+          <label for="hodInputEmail1">Email address:</label>
+          <input type="email" class="form-control" id="hodInputEmail" aria-describedby="emailHelp" placeholder="Enter email" name="email">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password:</label>
+          <input type="password" class="form-control" id="hodInputPassword" placeholder="Password" name="password">
+        </div>
+        <div class="form-group form-check">
+         <a href="#" class="ali">Forgot Password</a>
+          <a type="text" href="contact.html" class="ali">Other Login Issues?</a>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg btn-block " onclick="hodlogin" >Submit</button>
+      </form>
+          </div>
+          
+          
+          <div class="modal-body" id="hodsignup" style="display: none;">
+              <form action="/hodsignup" method="POST" >
+        <div class="form-group" >
+          <label for="hodInputName1">Full Name:</label>
+          <input type="text" class="form-control" id="hodInputName" aria-describedby="emailHelp" placeholder="Enter Name" name="fullname">
+        </div>
+         <div class="form-group">
+          <label for="hodInputEmail1">Email address:</label>
+          <input type="email" class="form-control" id="hodInputEmail" aria-describedby="emailHelp" placeholder="Enter email" name="email">
+        </div>
+         <div class="form-group">
+          <label for="hodInputMobile1">Mobile No:</label>
+          <input type="mobileno" class="form-control" placeholder="Enter Mobile No" name="mobile">
+        </div>
+         <div class="form-group">
+          <label for="hodSelectDepartment1">Department:</label>
+          <select  id="hodSelectDepartment1" name="dropdown">
+        <option value="--">--Select--</option>
+        <option value="IT">IT</option>
+        <option value="ME">ME</option>
+        <option value="EE">EE</option>
+        </select>
+        </div>
+        <div class="form-group">
+          <label for="hodInputPassword1">Password</label>
+          <input type="password" class="form-control" id="hodInputPassword1" placeholder="Password" name="password">
+        </div>
+        <div class="form-group">
+        <input type="password" class="form-control" id="hodInputReEnterPassword1" aria-describedby="emailHelp" placeholder="Re Enter Password" name="pass_check">
+        </div>
+        
+        <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+      </form>
+          </div>
+          </div>
+        </div>
+      </div>
+        <div class="modal fade" id="facultyModal" tabindex="-1" role="dialog" aria-labelledby="facultyModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content" style="display:block;">
+            
+          <div class="modal-header"class="row">
+        <table class="btn-group">
+        <tr class="nav nav-tabs">
+        <td>
+            <div class="modal-header" class="col-sm-3">
+              <a class="modal-title" id="hodModalLabel" href="#login" onClick="split1(this);">Login</a>
+            </div>
+          </td>
+          <td>
+          <div class="modal-header" class="col-sm-3">
+             <a class="modal-title" id="hodModalLabel1" href="#signup" onClick="split1(this);">Signup</a>
+            </div>
+          </td>
+          </table>
+          <div class="modal-header" class="col-md">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick="showPopfaculty(this)">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          </div> 
+          
+          
+          
+            <div class="modal-body" id="facultylogin" style="display: block;">
+              <form action="/faclogin" method="POST">
+        <div class="form-group">
+          <label for="facultyInputEmail1">Email address:</label>
+          <input type="email" class="form-control" id="facultyInputEmail" aria-describedby="emailHelp" placeholder="Enter email">
+        </div>
+        <div class="form-group">
+          <label for="facultyInputPassword1">Password:</label>
+          <input type="password" class="form-control" id="facultyInputPassword" placeholder="Password">
+        </div>
+        <div class="form-group form-check">
+        <a href="forgotpass.html" class="ali">Forgot Password</a>
+         <a href="contact.html" class="ali">Other Login Issues?</a> 
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+      </form>
+          </div>
+          
+          
+          <div class="modal-body" id="facultysignup" style="display: none;">
+              <form action="/facsignup" method="POST">
+        <div class="form-group">
+          <label for="hodInputName1">Full Name:</label>
+          <input type="text" class="form-control" id="facultyInputName" aria-describedby="emailHelp" placeholder="Enter Name" name="fullname">
+        </div>
+         <div class="form-group">
+          <label for="facultyInputEmail1">Email address:</label>
+          <input type="email" class="form-control" id="facultyInputEmail" aria-describedby="emailHelp" placeholder="Enter email" name="email">
+        </div>
+         <div class="form-group">
+          <label for="facultyInputMobile1">Mobile No:</label>
+          <input type="number" class="form-control" id="facultyInputMobile" aria-describedby="emailHelp" placeholder="Enter Mobile No" name="mobile">
+        </div>
+         <div class="form-group">
+          <label for="facultySelectDepartment">Department:</label>
+          <select  id="facultySelectDepartment" class="scroll">
+        <option value="--">--Select--</option>
+        <option value="IT">IT</option>
+        <option value="ME">ME</option>
+        <option value="EE">EE</option>
+        </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="hodInputPassword1">Password</label>
+          <input type="password" class="form-control" id="facultyInputPassword1" placeholder="Password">
+        </div>
+        <div class="form-group">
+        <input type="password" class="form-control" id="facultyInputReEnterPassword1" aria-describedby="emailHelp" placeholder="Re Enter Password">
+        </div>
+        
+        <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+      </form>
+          </div>
+          
+          
+          </div>
+        </div>
+      </div>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+          </form>
+      </nav>
+        <script>
+          function showPophod(e){
+            var x = document.getElementById("hodModal");
+            if(x.style.display=="none"){
+              x.style.display="block";
+              x.className+=' show';
+            }else{
+              x.style.display="none";
+            }
+          }
+        </script>
+        <script>
+          function showPopfaculty(e){
+            var x = document.getElementById("facultyModal");
+            if(x.style.display=="none"){
+              x.style.display="block";
+              x.className+=' show';
+            }else{
+              x.style.display="none";
+            }
+          }
+        </script>
+        <script>
+          function split(e){
+            var x = document.getElementById("hodlogin");
+            var y = document.getElementById("hodsignup");
+            if(e.getAttribute("href")=="#login"){
+              x.style.display="block";
+              y.style.display="none";
+            }else{
+              y.style.display="block"
+              x.style.display="none";
+            }
+          }
+        </script>
+        <script>
+          function split1(e){
+            var x = document.getElementById("facultylogin");
+            var y = document.getElementById("facultysignup");
+            if(e.getAttribute("href")=="#login"){
+              x.style.display="block";
+              y.style.display="none";
+            }else{
+              y.style.display="block"
+              x.style.display="none";
+            }
+          }
+        </script>
+
+<div><h3 align="center" style="padding: 40px 0px 20px">About Us</h3></div>
+<div  style="padding: 0px 100px 30px" >
+  <p>
+      Most colleges have a number of different courses and each course has a number of subjects. Now there are limited faculties, 
+      each faculty teaching more than one subjects. So now the time table needed to schedule the faculty at provided time slots in 
+      such a way that their timings do not overlap and the time table schedule makes best use of all faculty subject demands and
+      it helps in reducing the human effort in creating the timetable by automatically generating the timetable according to the given input.
+  </p>
+</div>
+
+<div style="position: relative; min-height: 80vh">
+<div><h3 align="center" style="padding: 20px 0px 0px">Our Team</h3></div>
+<div align="center" class="row" style="padding: 50px 150px 0px">
+  <div class="col-sm-3">
+      <img src="static/img/pranjal.jpg" width="100" height="120" style="border:1px solid black"><br>
+      Pranjal Raman Srivastava<br>
+      1673413030
+  </div>
+  <div class="col-sm-3" >
+      <img src="static/img/praphull.png" width="100" height="120" style="border:1px solid black"><br>
+      Praphull Maurya<br>
+      1673413031
+  </div>
+  <div class="col-sm-3">
+      <img src="static/img/priyanshu.jpg" width="100" height="120" style="border:1px solid black"><br>
+      Priyanshu Shrivastava<br>
+      1673413034
+  </div>
+  <div class="col-sm-3">
+    <img src="static/img/dev.jpeg" width="100" height="120" style="border:1px solid black"><br>
+      Rishabh Dev Narayan<br>
+      1673413036
+  </div>
+</div>
+
+<footer style="padding: 50px 0px">
+  <div align="center" style="background-color: #008a93; position: absolute; bottom:0; width:100%; padding: 1rem; color: white">
+      &copy; Automatic Timetable Generator 2019
+  </div>
+</footer>
+</div>
+
+</body>
+</html>
